@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpathAI Chatbot</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #chatbox { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; }
+        .user { color: blue; }
+        .bot { color: green; }
+    </style>
+</head>
+<body>
+    <h1>EmpathAI Chatbot</h1>
+    <div id="chatbox"></div>
+    <input type="text" id="user_input" placeholder="Type your message..." />
+    <button id="send_button">Send</button>
+
+    <script>
+        $('#send_button').click(function() {
+            const userInput = $('#user_input').val();
+            $('#chatbox').append('<div class="user">You: ' + userInput + '</div>');
+            $('#user_input').val('');
+
+            $.post('/ask', { user_input: userInput }, function(data) {
+                $('#chatbox').append('<div class="bot">EmpathAI: ' + data.response + '</div>');
+                $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+            });
+        });
+    </script>
+</body>
+</html>
