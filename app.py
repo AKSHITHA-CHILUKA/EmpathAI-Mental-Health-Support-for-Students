@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 # Replace with your Gemini API key and endpoint
-GEMINI_API_KEY= "AIzaSyCRokyZof2Ggvn9vCnSbqwFjV-jdNjBJa8"
+GEMINI_API_KEY= ""
 
 GEMINI_ENDPOINT = 'https://api.gemini.com/v1/chat'
 
